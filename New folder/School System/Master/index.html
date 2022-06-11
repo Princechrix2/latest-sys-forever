@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard || Forever Tvet Institute</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Loader -->
+    <div class="loader "  style="margin-top: 243px;" id="loader">Loading...</div>
+
+
+
+    <!-- Loader -->
+    <div class="container  mt-5" style="display: none;" id="err">
+        <div class="row mt-5">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="card shadow-lg">
+                    <div class="card-header bg-danger">
+                        <h2  style="font-family: 'Lobster Two', cursive;" class="text-center text-light">An Error Occured</h2>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title" id="error-msg"></h5>
+                        <div id="retry">
+                            <h5>Please Try Again!</h5>
+                            <button id="btn-ret" class="btn btn-primary">Return back</button>
+                        </div>
+
+                        <p class="card-text" id="retry"></p>
+                    </div>
+                
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+    <div class="error">
+
+    </div>
+
+    <section id="all2" style="min-height: 100vh;background-image: linear-gradient(to left bottom, #2739f8, #8f4eed, #bf6de6, #dd91e2, #f0b8e5, #efbfe8, #eec6ea, #edcdec, #d9b6ed, #baa3f2, #8894f9, #0689ff);" class="">
+        <div class="container mt">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <div style="margin-top: 100px;" class="card-group shadow-lg ">
+                        <div class="card">
+                  
+                            <div class="card-body">
+                                <h4 class="card-title text-center text-primary"  style="font-family: 'Lobster Two', cursive;">Forever Tvet Institute System</h4>
+                                    <p class="text-center" style="font-family: 'Lobster Two', cursive;">(Admin)</p>
+                                <div class="row">
+                                    <div class="form-group mt-3">
+                                      <label  style="font-family: 'Lobster Two';" for="">Email/Username </label>
+                                      <input type="email" autocomplete="off" class="form-control" name="email" id="email" aria-describedby="helpId" placeholder="User Name" required>
+                          
+                                    </div>
+                                    <div class="form-group mt-3">
+                                      <label  style="font-family: 'Lobster Two';" for="">Password </label>
+                                      <input type="password" autocomplete="off" class="form-control" name="psw" id="psw" aria-describedby="helpId" placeholder="Your Password" required>
+            
+                                    </div>
+                                    <div class="form-group">
+                        
+                                      <input type="submit"  style="font-family: 'Lobster Two', cursive;" class="btn btn-primary mt-3" name="submitData" id="submitData" aria-describedby="helpId" value="Login">
+            
+                                    </div>
+                                    <div class="foot">
+                                        <p class="text-center text-muted">~ Forever Technology ~</p>
+                                    </div>
+
+
+                                </div>
+                             
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+        </div>
+    </section>
+
+    <div class="all" id="all" style="display: none;">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary ">
+
+            <a class="navbar-brand container" style="font-family: 'Lobster Two', cursive;">Forever Tvet Institute</a>
+            <button class="navbar-toggler" data-target="#my-nav" data-toggle="collapse" aria-controls="my-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+            <div id="my-nav" class="collapse pr-3 navbar-collapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#" id="nm" tabindex="-1" aria-disabled="true"></a>
+                    </li>                    
+                    <li class="nav-item active">
+                        <button id="btn_logout" style="font-family: 'Lobster Two', cursive;" class="btn btn-success">Logout</button>
+                    </li>
+
+                </ul>
+            </div>
+        </nav>
+
+        <div class="d-flex align-items-start mt-4 p-3">
+            <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <button class="nav-link active" id="v-pills-home-tab" data-toggle="tooltip" data-placement="right" title="Students List" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true"><span class="material-symbols-outlined">list_alt</span></button>
+                <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false"><span class="material-symbols-outlined">psychology</span></button>
+                <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false"><span class="material-symbols-outlined">engineering</span></button>
+                <button class="nav-link" id="v-pills-todo-tab" data-bs-toggle="pill" data-bs-target="#v-pills-Todo" type="button" role="tab" aria-controls="v-pills-todo" aria-selected="false"><span class="material-symbols-outlined">checklist_rtl</span></button>
+                <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false"><span class="material-symbols-outlined">settings_suggest</span></button>
+            </div>
+            <div class="tab-content" id="v-pills-tabContent">
+                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                    <div class="container">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title text-center" style="font-family: 'Lobster Two', cursive;">Forever Tvet Institute Students</h5>
+                                <p class="card-text"></p>
+                                <table id="tableData" class="table">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th scope="col">First Name</th>
+                                            <th scope="col">Last Name</th>
+                                            <th scope="col">Province</th>
+                                            <th scope="col">District</th>
+                                            <th scope="col">Sector</th>
+                                            <th scope="col">Village</th>
+                                            <th scope="col">Phone Number</th>
+                                            <th scope="col">Gender</th>
+                                            <th scope="col">Level</th>
+                                            <th scope="col">Trade</th>
+                                            <th scope="col">Year</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tble" class="table-group-divider">
+
+                                    </tbody>
+                                </table>
+
+                                <button type="button" id="export" class="btn btn-success"><span class="material-symbols-outlined">file_download</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                    <div class="container">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title text-center" style="font-family: 'Lobster Two', cursive;">Forever Tvet Institute Teachers</h5>
+                                <p class="card-text"></p>
+                                <table id="tableeData" class="table">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th scope="col">First Name</th>
+                                            <th scope="col">Last Name</th>
+                                            <th scope="col">District</th>
+                                            <th scope="col">Sector</th>
+                                            <th scope="col">Phone Number</th>
+                                            <th scope="col">Gender</th>
+                                            <th scope="col">Level Teaching</th>
+                                            <th scope="col">Trade Teaching</th>
+                                            <th scope="col">Courses</th>
+                                            <th scope="col">Degree</th>
+                                            <th scope="col">Salary</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tblee" class="table-group-divider">
+
+                                    </tbody>
+                                </table>
+
+                                <button type="button" id="exporrt" class="btn btn-success"><span class="material-symbols-outlined">file_download</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                    
+            <div class="container">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-center" style="font-family: 'Lobster Two', cursive;">Register a Teacher</h5>
+                        <p class="card-text"></p>
+                          <form action="" onsubmit="return SendTeachers();">
+                              <div class="row">
+                                  <div class="col">
+                                      <div class="input-group">
+                                          <div class="input-group-prepend">
+                                              <span class="input-group-text">First Name</span>
+                                          </div>
+                                          <input class="form-control" type="text" name="" id="fnamet" autocomplete="off" placeholder="" required>
+                                      </div>
+                                  </div>
+                                  <div class="col">
+                                      <div class="input-group">
+                                          <div class="input-group-prepend">
+                                              <span class="input-group-text">Last Name</span>
+                                          </div>
+                                          <input class="form-control" type="text" name="" autocomplete="off" id="lnamet" placeholder="" required>
+                                      </div>
+                                  </div>
+                                  
+          
+                              </div>
+
+                              <div class="row mt-3">
+
+                              </div>
+                              
+                              <div class="row mt-2">
+                                  <div class="col">
+                                      <div class="input-group">
+                                          <div class="input-group-prepend">
+                                              <span class="input-group-text" id="my-addon">District</span>
+                                          </div>
+                                          <input class="form-control" type="text" name="" id="districtt" placeholder="" aria-label="Recipient's " aria-describedby="my-addon">
+                                      </div>
+                                  </div>
+                                  <div class="col">
+                                      <div class="input-group">
+                                          <div class="input-group-prepend">
+                                              <span class="input-group-text" id="my-addon">Sector</span>
+                                          </div>
+                                          <input class="form-control" type="text" name="" id="sectort" placeholder="" aria-label="Recipient's " aria-describedby="my-addon">
+                                      </div>
+                                  </div>
+                              </div>
+
+
+                              <div class="row mt-2">
+                                  <div class="col">
+                                      <div class="input-group">
+                                          <div class="input-group-prepend">
+                                              <span class="input-group-text" id="my-addon">Phone Number</span>
+                                          </div>
+                                          <input class="form-control" type="text" name="" id="phonet" placeholder="" aria-label="Recipient's " aria-describedby="my-addon">
+                                      </div>
+                                  </div>
+                                  <div class="col">
+                                      <div class="col-md-4">
+                         
+                                          <select id="gendert" class="form-select">
+                                            <option selected>Gender</option>
+                                            <option>Male</option>
+                                            <option>Female</option>
+                  
+                                            </select>
+                                          
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div class="row mt-2">
+                                  <div class="col">
+                                      <div class="col-md-4">
+                                          <label for="inputState" class="form-label">Level</label>
+                                          <select id="levelt" class="form-select">
+                                            <option selected>Choose...</option>
+                                            <option>Level 3</option>
+                                            <option>Level 4</option>
+                                            <option>Level 5</option>
+                                          </select>
+                                        </div>
+                                  </div>
+                                  <div class="col">
+                                      <div class="col-md-4">
+                                          <label for="inputState" class="form-label">Trade</label>
+                                          <select id="tradet" class="form-select">
+                                            <option selected>Choose...</option>
+                                            <option>CST</option>
+                                            <option>LS</option>
+                                            <option>RCPO</option>
+                                            <option>ELC</option>
+                                            <option>CST - ELC</option>
+                                            <option>RCPO - LS</option>
+                                            <option>All</option>
+                                          </select>
+                                        </div>
+                                  </div>
+                                  <div class="col">
+                                      <div class="col-md-4">
+                                          <label for="inputState" class="form-label">Courses</label>
+                                          <select id="courset" class="form-select">
+                                            <option selected>Choose...</option>
+                                            <option>Networking</option>
+                                            <option>English</option>
+                                            <option>Bussiness C</option>
+                                            <option>Math~Phy</option>
+                                            <option>Hardware</option>
+                                          </select>
+                                        </div>
+                                  </div>
+
+                              </div>
+                              <div class="row mt-3">
+                                <div class="col">
+                                    <label for="inputState" class="form-label">Degree</label>
+                                    <select id="degreet" class="form-select">
+                                      <option selected>Choose...</option>
+                                      <option>Bachelor's</option>
+                                      <option>associate</option>
+                                      <option>master's</option>
+                                      <option>doctoral</option>
+                         
+                                    </select>
+                                </div>
+                              </div>
+
+                              <div class="row mt-3">
+                                  <div class="col">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Payment Salary</span>
+                                        </div>
+                                        <input class="form-control" type="text" name="" autocomplete="off" id="salaryt" placeholder="" required>
+                                    </div>
+                                  </div>
+                              </div>
+
+                              <div class="row mt-3">
+                                  <div class="col">
+                                      <input class="btn btn-primary" style="font-family: 'Lobster Two', cursive;" type="submit" value="Register" name="">
+                                  </div>
+                              </div>
+
+                          </form>
+                    </div>
+                </div>
+
+
+                </div>
+                <div class="tab-pane fade" id="v-pills-todo" role="tabpanel" aria-labelledby="v-pills-todo-tab">
+
+                </div>
+                <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...
+                    <div class="container">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Title</h5>
+                                    <p class="card-text">Content</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- <form onsubmit="return Send();">
+
+                    <input type="text" class="form-control" name="inputName" id="message" placeholder="">
+
+                    <input type="submit" class="btn btn-primary">
+        </form> -->
+    </div>
+
+    <!-- 
+    <script>
+        function expo(type) {
+            var data = document.getElementById("student_data");
+
+            var file = XLSX.utils.table_to_book(data, {
+                sheet: "sheet1"
+            });
+
+            XLSX.write(file, {
+                bookType: type,
+                bookSST: true,
+                type: 'base64'
+            });
+            XLSX.writeFile(file, 'file.' + type);
+        }
+
+        const export_button = document.getElementById('exp');
+
+        export_button.addEventListener('click', () => {
+            expo('xlsx');
+        });
+    </script> -->
+
+
+    <script>
+
+                
+
+ 
+    </script>
+
+
+    <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
+    <script src="main.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <script src="main.js"></script>
+    <script src="login.js"></script>
+
+    <script src="popper.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lobster+Two&display=swap');
+    </style>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+    
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import {initializeApp} from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+    import {
+        getAuth,
+        createUserWithEmailAndPassword,
+        signInWithEmailAndPassword,
+        signOut
+    } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
+    import {getDatabase, set, ref, update} from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
+
+
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyAz4l0NelkNIt22lnktqeAacYt_lmpgQAE",
+        authDomain: "forever-system.firebaseapp.com",
+        databaseURL: "https://forever-system-default-rtdb.firebaseio.com/",
+        projectId: "forever-system",
+        storageBucket: "forever-system.appspot.com",
+        messagingSenderId: "445987315824",
+        appId: "1:445987315824:web:086da28fcd243b110494b5"
+        // Your configs
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth();
+    const database = getDatabase(app);
+
+    submitData.addEventListener('click', (e) => {
+
+        var email = document.getElementById('email').value;
+        var password = document.getElementById('psw').value;
+
+        //sign up user
+        // createUserWithEmailAndPassword(auth, email, password)
+        //     .then((userCredential) => {
+        //         // Signed in
+        //         const user = userCredential.user;
+        //         // ... user.uid
+        //         set(ref(database, 'users/' + user.uid), {
+        //             email: email,
+        //             password: password
+        //         })
+        //             .then(() => {
+        //                 // Data saved successfully!
+        //                 alert('user created successfully');
+        
+        //             })
+        //             .catch((error) => {
+        //                 // The write failed...
+        //                 alert(error);
+        //             });
+        //     })
+        //     .catch((error) => {
+        //         const errorCode = error.code;
+        //         const errorMessage = error.message;
+        //         // ..
+        //         alert(errorMessage);
+        //     });
+
+        // log in user
+        signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                // Signed in
+                const user = userCredential.user;
+                // ...
+                document.getElementById("nm").innerText += user.email
+                // save log in details into real time database
+                var lgDate = new Date();
+                update(ref(database, 'users/' + user.uid), {
+                    last_login: lgDate,
+                })
+                    .then(() => {
+                        // Data saved successfully!
+                        document.getElementById("all").style.display = "block"
+                        document.getElementById("all2").style.display = "none"
+                        // alert('user logged in successfully');
+
+                    })
+                    .catch((error) => {
+                        // The write failed...
+                        alert(error);
+                    });
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                document.getElementById("err").style.display = "block"
+                document.getElementById("error-msg").innerText += errorMessage
+
+            });
+
+        // sign out user
+        signOut(auth).then(() => {
+               // Sign-out successful.
+        }).catch((error) => {
+            // An error happened.
+        });
+    });
+
+
+
+    document.getElementById("btn_logout").addEventListener("click", ()=>{
+        document.getElementById("all").style.display = "none"
+        document.getElementById("loader").style.display = "none"
+        document.getElementById("all2").style.display = "block"        
+    })
+    document.getElementById("submitData").addEventListener("click", ()=>{
+        document.getElementById("email").value = ""
+        document.getElementById("psw").value = "" 
+        setTimeout(() => {
+            const loader = document.getElementById('loader');
+
+            loader.style.display = 'none';
+        }, 1600)
+    })
+    document.getElementById("btn-ret").addEventListener("click", ()=>{
+        document.getElementById("all2").style.display = "block" 
+        document.getElementById("err").style.display = "none" 
+    })
+
+
+</script>
+</body>
+
+</html>
